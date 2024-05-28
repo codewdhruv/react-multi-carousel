@@ -5,12 +5,12 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import Typography from '@material-ui/core/Typography';
-import "react-multi-carousel/lib/styles.css";
+import "react-multi-carousel/lib/styles.c";
 
 import Menu from '../components/menu';
 import getPageContext from '../src/getPageContext';
 
-class MyApp extends App {
+class MyApp extends NewChange {
   constructor() {
     super();
     this.pageContext = getPageContext();
@@ -55,4 +55,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default NewChange;

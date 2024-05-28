@@ -1,55 +1,34 @@
 import * as React from "react";
-
 import { StateCallBack } from "./types";
 
-interface LeftArrowProps {
-  customLeftArrow?: React.ReactElement<any> | null;
-  getState: () => StateCallBack;
-  previous: () => void;
-}
-interface RightArrowProps {
-  customRightArrow?: React.ReactElement<any> | null;
-  getState: () => StateCallBack;
-  next: () => void;
-}
-
-const LeftArrow = ({
-  customLeftArrow,
-  getState,
-  previous
-}: LeftArrowProps): React.ReactElement<any> => {
-  if (customLeftArrow) {
-    return React.cloneElement(customLeftArrow, {
-      onClick: () => previous(),
-      carouselState: getState()
+const LeftArrow = (props: any): any => {
+  if (props.customLeftArrow) {
+    return React.cloneElement(props.customLeftArrow, {
+      onClick: () => props.previous(),
+      carouselState: props.getState()
+    });
+  } else {
+    return React.createElement("button", {
+      "aria-label": "Go to previous slide",
+      className: "react-multiple-carousel__arrow react-multiple-carousel__arrow--left",
+      onClick: props.previous
     });
   }
-  return (
-    <button
-      aria-label="Go to previous slide"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"
-      onClick={() => previous()}
-    />
-  );
 };
-const RightArrow = ({
-  customRightArrow,
-  next,
-  getState
-}: RightArrowProps): React.ReactElement<any> => {
-  if (customRightArrow) {
-    return React.cloneElement(customRightArrow, {
-      onClick: () => next(),
-      carouselState: getState()
+
+const RightArrow = (props: any): any => {
+  if (props.customRightArrow) {
+    return React.cloneElement(props.customRightArrow, {
+      onClick: () => props.next(),
+      carouselState: props.getState()
+    });
+  } else {
+    return React.createElement("button", {
+      "aria-label": "Go to next slide",
+      className: "react-multiple-carousel__arrow react-multiple-carousel__arrow--right",
+      onClick: props.next
     });
   }
-  return (
-    <button
-      aria-label="Go to next slide"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right"
-      onClick={() => next()}
-    />
-  );
 };
 
 export { LeftArrow, RightArrow };

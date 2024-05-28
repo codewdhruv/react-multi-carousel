@@ -6,48 +6,68 @@ interface LeftArrowProps {
   customLeftArrow?: React.ReactElement<any> | null;
   getState: () => StateCallBack;
   previous: () => void;
+  disabled?: boolean;
+  rtl?: boolean;
 }
 interface RightArrowProps {
   customRightArrow?: React.ReactElement<any> | null;
   getState: () => StateCallBack;
   next: () => void;
+  disabled?: boolean;
+  rtl?: boolean;
 }
 
 const LeftArrow = ({
   customLeftArrow,
   getState,
-  previous
+  previous,
+  disabled,
+  rtl
 }: LeftArrowProps): React.ReactElement<any> => {
   if (customLeftArrow) {
     return React.cloneElement(customLeftArrow, {
       onClick: () => previous(),
-      carouselState: getState()
+      carouselState: getState(),
+      disabled: disabled,
+      rtl: rtl
     });
   }
+  const rtlClassName = rtl ? "rtl" : "";
+
   return (
     <button
       aria-label="Go to previous slide"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left ${rtlClassName}`}
       onClick={() => previous()}
+      type="button"
+      disabled={disabled}
     />
   );
 };
 const RightArrow = ({
   customRightArrow,
+  getState,
   next,
-  getState
+  disabled,
+  rtl
 }: RightArrowProps): React.ReactElement<any> => {
   if (customRightArrow) {
     return React.cloneElement(customRightArrow, {
       onClick: () => next(),
-      carouselState: getState()
+      carouselState: getState(),
+      disabled: disabled,
+      rtl: rtl
     });
   }
+  const rtlClassName = rtl ? "rtl" : "";
+
   return (
     <button
       aria-label="Go to next slide"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right ${rtlClassName}`}
       onClick={() => next()}
+      type="button"
+      disabled={disabled}
     />
   );
 };

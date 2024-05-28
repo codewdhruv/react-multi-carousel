@@ -20,6 +20,7 @@ export interface CarouselProps {
   slidesToSlide?: number;
   draggable?: boolean;
   arrows?: boolean; // show or hide arrows.
+  renderArrowsWhenDisabled?: boolean; // Allow for the arrows to have a disabled attribute instead of not showing them
   swipeable?: boolean;
   removeArrowOnDeviceType?: string | Array<string>;
   children: any;
@@ -33,6 +34,7 @@ export interface CarouselProps {
   beforeChange?: (nextSlide: number, state: StateCallBack) => void; // Change callback before sliding everytime. `(previousSlide, currentState) => ...`
   sliderClass?: string; // Use this to style your own track list.
   itemClass?: string; // Use this to style your own Carousel item. For example add padding-left and padding-right
+  itemAriaLabel?: string; // Use this to add your own Carousel item aria-label.if it is not defined the child aria label will be applied if the child dont have one than a default empty string will be applied
   containerClass?: string; // Use this to style the whole container. For example add padding to allow the "dots" or "arrows" to go to other places without being overflown.
   className?: string; // Use this to style the whole container with styled-components
   dotListClass?: string; // Use this to style the dot list.
@@ -55,6 +57,11 @@ export interface CarouselProps {
   // this is needed for the resizing to work.
   focusOnSelect?: boolean;
   additionalTransfrom?: number; // this is only used if you want to add additional transfrom to the current transform
+  pauseOnHover?: boolean;
+  shouldResetAutoplay?: boolean;
+  rewind?: boolean;
+  rewindWithAnimation?: boolean;
+  rtl?: boolean;
 }
 
 export type StateCallBack = CarouselInternalState;

@@ -47,6 +47,10 @@
   z-index: 2;
   position: relative;
 }
+.react-multiple-carousel__arrow:disabled {
+  cursor: default;
+  background: rgba(0, 0, 0, 0.5);
+}
 
 .react-multiple-carousel__arrow--left {
   left: calc(4% + 1px);
@@ -109,4 +113,22 @@
   .react-multi-carousel-track {
     overflow: visible !important;
   }
+}
+
+[dir='rtl'].react-multi-carousel-list {
+  direction: rtl;
+}
+.rtl.react-multiple-carousel__arrow--right {
+  right: auto;
+  left: calc(4% + 1px);
+}
+.rtl.react-multiple-carousel__arrow--right::before {
+  content: "\e824";
+}
+.rtl.react-multiple-carousel__arrow--left {
+  left: auto;
+  right: calc(4% + 1px);
+}
+.rtl.react-multiple-carousel__arrow--left::before {
+  content: "\e825";
 }
